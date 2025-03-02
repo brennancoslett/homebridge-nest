@@ -55,6 +55,27 @@
         "placeholder": "Optional, Default is 15",
         "description": "Number of minutes to run the fan when manually turned on"
       },
+      "minOutdoorTempC": {
+        "title": "Minimum Outdoor Temperature for AC",
+        "type": "number",
+        "minimum": -10,
+        "maximum": 30,
+        "default": 18.3,
+        "required": false,
+        "description": "Minimum outdoor temperature (in Celsius) for running the air conditioner. Below this temperature, the fan will run instead."
+      },
+      "weatherApiKey": {
+        "title": "OpenWeatherMap API Key",
+        "type": "string",
+        "required": false,
+        "description": "API key for OpenWeatherMap to get outdoor temperature data. Get a free key at https://openweathermap.org/api"
+      },
+      "weatherLocation": {
+        "title": "Weather Location",
+        "type": "string",
+        "required": false,
+        "description": "Location for weather data (e.g., 'Chicago,IL,US' or 'London,GB')"
+      },
       "options": {
         "title": "Feature Options",
         "type": "array",
@@ -149,6 +170,9 @@
       "items": [
         "structureId",
         "fanDurationMinutes",
+        "minOutdoorTempC",
+        "weatherApiKey",
+        "weatherLocation",
 {
           "key": "options",
           "add": "Add Another Option",

@@ -59,6 +59,7 @@ Optional fields:
 * `"options"`: `[ "feature1", "feature2", ... ]` // optional list of features to enable/disable (see 'Feature Options' below)
 * `"fanDurationMinutes"`: number of minutes to run the fan when manually turned on (optional, default is `15`)
 * `"hotWaterDurationMinutes"`: number of minutes to run the hot water when manually turned on (optional, default is `30`, only for systems with hot water control)
+* `"minOutdoorTempC"`: the minimum outdoor temperature (in Celsius) for running the air conditioner. Below this temperature, the fan will run instead of sending cooling commands to the Nest API (default 18.3°C/65°F)
 
 # Using a Nest Account
 
@@ -148,6 +149,49 @@ Set `"options"` in `config.json` to an array of strings chosen from the followin
 * `"Nest.FieldTest.Enable"` - set this option if you're using a Nest Field Test account (experimental)
 
 By default, options set apply to all devices. To set an option for a specific device only, add `.device_id` to the corresponding `option`, where `device_id` is shown in the Homebridge logs, or in HomeKit itself as *Serial Number* in the Settings page for your device. For example, to disable one specific thermostat with serial number 09AC01AC31180349, add `"Thermostat.Disable.09AC01AC31180349"` to the `"options"` array.
+
+# New Features
+
+## Fan Operation When Too Cold for AC
+
+This plugin now includes a feature to run the fan instead of the air conditioner when it's too cold outside. This is useful in situations where you want to set your thermostat to cool mode, but it's too cold outside to efficiently run the air conditioner.
+
+When the outdoor temperature is below the threshold set in `minOutdoorTempC` (default 18.3°C/65°F), the plugin will:
+
+1. For COOL mode:
+   - Not send the cooling command to the Nest API
+   - Run the fan locally instead
+   - Continue to report the correct cooling state to HomeKit
+
+2. For AUTO mode:
+   - Show AUTO mode in HomeKit but not actually set the Nest thermostat to AUTO mode
+   - If the indoor temperature is high enough to trigger cooling, run the fan instead
+   - If the indoor temperature is low enough to trigger heating, allow normal operation
+
+This approach prevents the Nest app from trying to cool when it's too cold outside, while maintaining the expected behavior in HomeKit.
+
+To configure this feature, add the following parameters to your config:
+
+```
+"platforms": [
+    {
+        "platform": "Nest",
+        "access_token": "your Nest Account access token",
+        "minOutdoorTempC": 15.5,  // Set your preferred minimum temperature (in Celsius)
+        "weatherApiKey": "your-openweathermap-api-key",  // Optional: for actual outdoor temperature
+        "weatherLocation": "Chicago,IL,US"  // Optional: your location for weather data
+    }
+],
+```
+
+The plugin uses the OpenWeatherMap API to get the actual outdoor temperature. Here are the implementation details:
+
+1. The [Geocoding API](https://openweathermap.org/api/geocoding-api) is used to convert your location string to latitude and longitude.
+2. The [One Call API 3.0](https://openweathermap.org/api/one-call-3) is used to get the current temperature data.
+
+For the location, you can specify a city name, state code, and country code separated by commas (e.g., "Chicago,IL,US" or "London,GB").
+
+If you don't provide weather API information, the plugin will use a default value (0°C/32°F) for the outdoor temperature.
 
 # Things to try with Siri
 

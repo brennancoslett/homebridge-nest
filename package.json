@@ -5,9 +5,9 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git://github.com/chrisjshull/homebridge-nest.git"
+    "url": "git://github.com/brennancoslett/homebridge-nest.git"
   },
-  "homepage": "https://github.com/chrisjshull/homebridge-nest#readme",
+  "homepage": "https://github.com/brennancoslett/homebridge-nest#readme",
   "keywords": [
     "homebridge-plugin",
     "nest"
