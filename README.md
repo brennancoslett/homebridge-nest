@@ -1,27 +1,27 @@
-# homebridge-nest
+# homebridge-nest-fan
 
 [![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 [![Discord](https://img.shields.io/discord/432663330281226270?color=728ED5&logo=discord&label=discord)](https://discord.gg/j5WwJTB)
 
-Nest plug-in for [Homebridge](https://github.com/nfarina/homebridge) using the native Nest API. See what's new in [release 4.6.9](https://github.com/chrisjshull/homebridge-nest/releases/tag/v4.6.9).
+Nest plug-in for [Homebridge](https://github.com/nfarina/homebridge) using the native Nest API. See what's new in [release 4.6.9](https://github.com/chrisjshull/homebridge-nest-fan/releases/tag/v4.6.9).
 
 Integrate your Nest Thermostat, Temperature Sensors, Nest Protect, and Nest x Yale Lock devices into your HomeKit system. Both Nest Accounts (pre-August 2019) and Google Accounts are supported.
 
-Currently, homebridge-nest supports all Nest Thermostat, Protect, and Nest x Yale Lock models, including the EU/UK model of the Thermostat E with Heat Link and the October 2020 model Nest Thermostat with mirror display.
+Currently, homebridge-nest-fan supports all Nest Thermostat, Protect, and Nest x Yale Lock models, including the EU/UK model of the Thermostat E with Heat Link and the October 2020 model Nest Thermostat with mirror display.
 
-We do not support the discontinued Nest Secure system. We also do not support cameras - but for that, there is the excellent [homebridge-nest-cam](https://github.com/Brandawg93/homebridge-nest-cam) plug-in.
+We do not support the discontinued Nest Secure system. We also do not support cameras - but for that, there is the excellent [homebridge-nest-fan-cam](https://github.com/Brandawg93/homebridge-nest-fan-cam) plug-in.
 
 # Starling Home Hub
 
 If you want a plug-and-play Nest integration solution, check out [Starling Home Hub](https://www.starlinghome.io). It's a little box that connects to your home router, so you'll be up and running in minutes without needing to set up a Homebridge server, manually edit configuration files, or worry about authentication tokens. Starling Home Hub also supports Nest Cameras (including the August 2021 battery-powered models) and Nest Secure (Guard and Detects).
 
-If you want a DIY solution, then read on, as homebridge-nest is for you!
+If you want a DIY solution, then read on, as homebridge-nest-fan is for you!
 
 # Installation
 
 <!-- 2. Clone (or pull) this repository from github into the same path Homebridge lives (usually `/usr/local/lib/node_modules`). Note: the code currently on GitHub is in beta, and is newer than the latest published version of this package on `npm` -->
 1. Install homebridge using: `npm install -g homebridge`
-2. Install this plug-in using: `npm install -g homebridge-nest`
+2. Install this plug-in using: `npm install -g homebridge-nest-fan`
 3. Update your configuration file. See example `config.json` snippet below.
 
 # Configuration
@@ -63,7 +63,7 @@ Optional fields:
 
 # Using a Nest Account
 
-To use a Nest Account with homebridge-nest, you will need to obtain an access token from the Nest web app. (Note - no Nest developer account is required.) Simply go to `https://home.nest.com` in your browser and log in. Once that's done, go to `https://home.nest.com/session` in your browser, and you will see a long string that looks like this:
+To use a Nest Account with homebridge-nest-fan, you will need to obtain an access token from the Nest web app. (Note - no Nest developer account is required.) Simply go to `https://home.nest.com` in your browser and log in. Once that's done, go to `https://home.nest.com/session` in your browser, and you will see a long string that looks like this:
 
 ```
 {"2fa_state":"not_enrolled","access_token":"XXX","email":"...","expires_in":"...", ...}
@@ -205,9 +205,9 @@ If you don't provide weather API information, the plugin will use a default valu
 * Hey Siri, *what's the status of my smoke detector*?
 * Hey Siri, *unlock my Front Door*.
 
-# Donate to Support homebridge-nest
+# Donate to Support homebridge-nest-fan
 
-homebridge-nest is a labour of love. It's provided under the ISC licence and is completely free to do whatever you want with. But if you'd like to show your appreciation for its continued development, please consider [clicking here to make a small donation](https://paypal.me/adriancable586) or, even better, send me a thank-you card:
+homebridge-nest-fan is a labour of love. It's provided under the ISC licence and is completely free to do whatever you want with. But if you'd like to show your appreciation for its continued development, please consider [clicking here to make a small donation](https://paypal.me/adriancable586) or, even better, send me a thank-you card:
 
 Adrian Cable  
 PO Box 370365  

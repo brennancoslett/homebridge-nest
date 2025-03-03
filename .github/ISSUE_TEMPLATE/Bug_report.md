@@ -19,7 +19,7 @@ homebridge --version
 ```
 
 Make sure you have the latest LTS from https://nodejs.org
-and the latest packages: `npm upgrade -g homebridge homebridge-nest`
+and the latest packages: `npm upgrade -g homebridge homebridge-nest-fan`
 
 Also include debug log output from startup through seeing the issue:
 `DEBUG=* homebridge -D`

@@ -99,9 +99,9 @@ class NestPlatform {
                 let initialState = this.conn.apiResponseToObjectTree(this.conn.currentState);
                 this.accessoryLookup = generateAccessories(initialState);
 
-                this.api.unregisterPlatformAccessories('homebridge-nest', 'Nest', this.cachedAccessories);
+                this.api.unregisterPlatformAccessories('homebridge-nest-fan', 'Nest', this.cachedAccessories);
                 this.cachedAccessories = [];
-                this.api.registerPlatformAccessories('homebridge-nest', 'Nest', this.accessoryLookup.map(el => el.accessory));
+                this.api.registerPlatformAccessories('homebridge-nest-fan', 'Nest', this.accessoryLookup.map(el => el.accessory));
 
                 let accessoriesMounted = this.accessoryLookup.map(el => el.constructor.name);
 
@@ -176,5 +176,5 @@ module.exports = function(homebridge) {
     ProtectAccessory = require('./lib/nest-protect-accessory')();
     LockAccessory = require('./lib/nest-lock-accessory')();
 
-    homebridge.registerPlatform('homebridge-nest', 'Nest', NestPlatform);
+    homebridge.registerPlatform('homebridge-nest-fan', 'Nest', NestPlatform);
 };

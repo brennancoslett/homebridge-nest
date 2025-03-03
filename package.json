@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-nest",
+  "name": "homebridge-nest-fan",
   "version": "4.6.10",
   "description": "Nest Thermostat, Protect and Lock plug-in for homebridge",
   "license": "ISC",
